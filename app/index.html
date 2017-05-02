@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+  <ul class="menu">
+    <li><a href="#!/view1">Register form</a></li>
+    <li><a href="#!/view2">Database of registred users</a></li>
+  </ul>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div ng-view></div>
+
+ <!-- <div>Angular seed app: v<span app-version></span></div>
+  **********************
+  <div ng-controller="personController">  
+  
+        <h1 class="app-title">{{ appTitle }}</h1>  
+        <h1 class="app-headline">{{ appHeadline }}</h1>  
+  
+        <form name="frm">  
+            <table>  
+                <tr>  
+                    <td>First Name:</td>  
+                    <td><input type="text" name="firstname" ng-model="firstname" ><br/></td> {{firstname }} 
+                </tr>  
+                <tr><td>Last Name:</td>  
+                    <td><input type="text" name="lastname" ng-model="lastname" ></td>  
+                </tr>  
+                <tr>  
+                    <td>Address:</td>  
+                    <td><input type="text" name="address" ng-model="address" ></td>  
+                </tr>  
+                <tr>  
+                    <td>Date of Birth:</td>  
+                    <td><input type="date" name="birthdate" ng-model="birthdate" /><br/></td> {{ birthdate }} 
+                </tr>  
+                <tr>  
+                    <td colspan="2" align="right">
+                        <button ng-click="addPerson()" ng-disabled="frm.$invalid">Register</button>  
+                    </td>  
+                </tr>  
+            </table>  
+        </form>  
+
+
+        <table cellpadding="4" cellspacing="4" border="1" style="border-collapse: collapse; border: solid 1px #000">  
+            <tr>  
+                <td><b>First Name</b></td>  
+                <td><b>Last Name</b></td>  
+                <td><b>Address</b></td>
+				<td><b>Birth Date</b></td>  
+                <td><b>Action</b></td>  
+            </tr>  
+            <tr ng-repeat="person in persons">  
+                <td>{{ person.firstname }}  
+                </td>  
+                <td>{{ person.lastname }}  
+                </td>  
+                <td>{{ person.address }}  
+                </td>  
+                <td>{{ person.birthdate }}  
+                </td> 
+                <td>  
+                    <button ng-click="deletePerson(person)">Delete</button>  
+  
+                </td>  
+            </tr>  
+  
+        </table>  
+        <div>Total registred people : {{count}}</div>  
+   </div> -->
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  <td><input type="text" name="birthdate" ng-model="birthdate"  placeholder="yyyy-MM-dd"><br/></td>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>

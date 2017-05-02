@@ -1,0 +1,56 @@
+<head>
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 70%;
+	}
+	td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+	}
+</style>
+</head>
+<p>Database of registred users.</p>
+
+<div ng-controller="personController">  
+  
+        <h1 class="app-title">{{ appTitle }}</h1>  
+
+
+
+        <table cellpadding="4" cellspacing="4" border="1" style="border-collapse: collapse; border: solid 1px #000">  
+            <tr>  
+                <td><b>First Name</b></td>  
+                <td><b>Last Name</b></td>  
+                <td><b>Address</b></td>
+				<td><b>Birth Date</b></td>
+				<td><b>Creation Date</b></td> 				
+                <td><b>Action</b></td>  
+            </tr>  
+            <tr ng-repeat="person in persons">  
+                <td>{{ person.firstname }}  
+                </td>  
+                <td>{{ person.lastname }}  
+                </td>  
+                <td>{{ person.address }}  
+                </td>  
+                <td>{{ person.birthdate }}  
+                </td> 
+				<td>{{ person.creationdate }}  
+                </td> 
+                <td>  
+                    <button ng-click="deletePerson(person)">Delete</button>  
+                </td>  
+            </tr>  
+  
+        </table>  
+        <div>Total registred people : {{count}}</div>  
+   </div>
+
+   <!--<p>
+  Showing of 'interpolate' filter:
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+</p>
+<p>This is the partial for view 1.</p>-->
