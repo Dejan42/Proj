@@ -15,59 +15,69 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 }]);
 
 app.controller('personController', ['$scope', 'getLocalStorage', function ($scope, getLocalStorage) {    
-    $scope.appTitle = "Dejan Demo TASK";       
+    $scope.appTitle = "Dejan Demo TASK";  
+	
     //Read the Person List from LocalStorage    
     $scope.persons = getLocalStorage.getPersons();    
     //Count the Person List    
-    $scope.count = $scope.persons.length;    
-
-	//$scope.birthDatePerson = new Date($scope.birthdate);
-	// Return today's date and time
-	//var currentTime = new Date();
-	//var birthTime = new Date($scope.birthdate);
-
-	// $scope.monthB = $scope.birthDatePerson.getMonth();
-	//+var monthT = currentTime.getMonth();
-	//+var test = new Date();
-	//test = $scope.person.birthdate;
-	//var monthB = $scope.birthdate.getMonth();
-	// if ($scope.monthB < $scope.monthT) {
+    $scope.count = $scope.persons.length;
 
 	//Add Person - push to add Person in the Person Object    
     //Call Update Person to update the locally stored Person List 
+	//Callculate age and push or not to push...
     $scope.addPerson = function () {    
 		var currentTime = new Date();
 		var monthT = currentTime.getMonth();
 		var birthTime = $scope.birthdate;
 		var dayBT = birthTime.getDay();
-		alert("Hello "+ $scope.firstname + " " + $scope.lastname + ", you are now registred. " + currentTime + "#### TEST ####" + dayBT +  "########" + birthTime);
+		
+		var ageDifMs = Date.now() - birthTime.getTime();
+		var ageDate = new Date(ageDifMs); // miliseconds 
+		var age = Math.abs(ageDate.getUTCFullYear() - 1970);
+		
+		if (age > 20) {
 		$scope.persons.push({ 'firstname': $scope.firstname, 'lastname': $scope.lastname, 'address': $scope.address, 'birthdate': $scope.birthdate, 'creationdate': currentTime});    
 			getLocalStorage.updatePersons($scope.persons);  
+			alert("Hello "+ $scope.firstname + " " + $scope.lastname + ", you are now registred.");
 			$scope.firstname = '';    
 			$scope.lastname = '';    
 			$scope.address = '';
 			$scope.birthdate = ''; 
 			$scope.count = $scope.persons.length; 
+			}			
+		else {
+			alert("Hello "+ $scope.firstname + " " + $scope.lastname + ", you are NOT registred; You are ONLY " + age + " and can't even order alcohol in the USA. ");
+			$scope.firstname = '';    
+			$scope.lastname = '';    
+			$scope.address = '';
+			$scope.birthdate = ''; 		
+		};
+		
     };  
 
 	$scope.fridayGreen = function () {
         
 		var birthTime2 = $scope.birthdate;
 		var dayBTG = birthTime2.getDay();
-		alert("Birthday day: "+ dayBTG + " DAY ENTERED" + birthTime2 + " # " + $scope.birthdate);
+		alert("Birthday day on: "+ dayBTG + " (day in a week)");
 	    
        return dayBTG;      
     };
 	    
-	$scope.color = function () {
-        //return ($scope.fridayGreen() < 3) ? 'green' : 'red';
-		        return (2 < 3) ? 'green' : 'red';
-
-    };
+	$scope.$watch('birthdate', function (currScope, newVal, oldVal) {
+		var birthTime3 = $scope.birthdate;
+		var dayBT = birthTime3.getDay();
+		//alert(dayBT + 'changed' + birthTime3);
+		if (dayBT === 5) {
+		$scope.col = 'green';
+		}			
+		else {
+		$scope.col = 'white';
+		};
+    });
         
     //Delete Person - "splice" to remove the "per" row from the Person list    
     //All the Update Person to update the locally stored Person List    
-    //Count    
     $scope.deletePerson = function (per) {                       
         $scope.persons.splice($scope.persons.indexOf(per), 1);    
         getLocalStorage.updatePersons($scope.persons);    

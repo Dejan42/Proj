@@ -3,51 +3,59 @@
 	table {
 		font-family: arial, sans-serif;
 		border-collapse: collapse;
-		width: 50%;
+		width: 30%;
 	}
 	td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+		vertical-align: middle;
 	}
+	input
+    {
+		width: 250px;
+		height: 25px;
+		vertical-align: middle;
+    }
 </style>
 </head>
-<p>Entry Form.</p>
+
 <body>
 <div ng-controller="personController">  
-  
-        <h1 class="app-title">{{ appTitle }}</h1>  
-        <h1 class="app-headline">{{ appHeadline }}</h1>  
-  
+  <table> 
+	<tr>
+        <td><h1 class="app-title">{{ appTitle }}</h1></td> 
+	</tr>
+	<tr>
+		<td><b>Entry Form</b></td>   
+	</tr>
+  </table>
         <form name="frm">  
-            <table>  
+            <table cellpadding="4" cellspacing="4" border="1" style="border-collapse: collapse; border: solid 1px #000">  
                 <tr>  
                     <td>First Name:</td>  
-                    <td><input type="text" name="firstname" ng-model="firstname" ><br/></td>
+                    <td><input type="text" name="firstname" ng-model="firstname" ng-required="required"><br/></td>
                 </tr>  
                 <tr><td>Last Name:</td>  
-                    <td><input type="text" name="lastname" ng-model="lastname" ></td>  
+                    <td><input type="text" name="lastname" ng-model="lastname" ng-required="required"></td>  
                 </tr>  
                 <tr>  
                     <td>Address:</td>  
-                    <td><input type="text" name="address" ng-model="address" ></td>  
+                    <td><input type="text" name="address" ng-model="address" ng-required="required"></td>  
                 </tr>  
                 <tr>  
                     <td>Date of Birth:</td>  
-                    <td><input type="date" name="birthdate" ng-model="birthdate" /><br/>{{ birthdate }} </td> <br/>
+                    <td><input type="date" name="birthdate" ng-model="birthdate" style="background-color:{{col}};" ng-required="required"><br/></td> <br/>
                 </tr>  
                 <tr>  
-                    <td colspan="2" align="right">
-                        <button ng-click="addPerson()" ng-disabled="frm.$invalid">Register</button>  
-                    </td>  
-					                    <td colspan="2" align="right">
-                        <button ng-click="fridayGreen()" ng-disabled="frm.$invalid">Green</button>  
-                    </td>  
-                </tr>  
+					<td colspan="2" align="left">
+                        <button ng-click="addPerson()" ng-disabled="frm.$invalid">Register</button></td>
+		<!--		<tr>
+					<td colspan="2" align="right">
+                        <button ng-click="fridayGreen()" ng-disabled="frm.$invalid">Green</button></td>  
+                </tr>  -->
             </table>  
         </form>  
-		<div style="background-color:{{color}};"> State </div>
-		<div style="background-color: green;"> State </div>
 
    </div>
    </body>

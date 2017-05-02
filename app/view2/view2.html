@@ -3,7 +3,7 @@
 	table {
 		font-family: arial, sans-serif;
 		border-collapse: collapse;
-		width: 70%;
+		width: 90%;
 	}
 	td, th {
     border: 1px solid #dddddd;
@@ -12,14 +12,19 @@
 	}
 </style>
 </head>
-<p>Database of registred users.</p>
+
 
 <div ng-controller="personController">  
   
-        <h1 class="app-title">{{ appTitle }}</h1>  
-
-
-
+  <table> 
+		<tr>
+			<td><h1 class="app-title">{{ appTitle }}</h1></td> 
+		</tr>
+		<tr>
+			<td><b>Database of registred users</b></td>   
+		</tr>
+  </table>
+		
         <table cellpadding="4" cellspacing="4" border="1" style="border-collapse: collapse; border: solid 1px #000">  
             <tr>  
                 <td><b>First Name</b></td>  
@@ -42,11 +47,12 @@
                 </td> 
                 <td>  
                     <button ng-click="deletePerson(person)">Delete</button>  
-                </td>  
+                </td>              
+			</tr> 
+			<tr>  
+				<td><b>Total registred people: {{count}}</b></td>
             </tr>  
-  
-        </table>  
-        <div>Total registred people : {{count}}</div>  
+        </table>   
    </div>
 
    <!--<p>
